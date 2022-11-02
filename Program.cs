@@ -20,6 +20,7 @@ Product TestProduct = new Product("msi laptop", "lorem", 500, 22);
 Console.WriteLine(TestProduct.GetProductNumber());
 Console.WriteLine(TestProduct.name);
 Console.WriteLine(TestProduct.FullName());
+Console.WriteLine(TestProduct.SerialNumber());
 class Product
 {
     private int productNumber = new Random().Next(1, 100);
@@ -30,7 +31,7 @@ class Product
 
     public Product(string name, string description, int price, int iva)
     {
-        this.productNumber = new Random().Next(1, 100);
+        this.productNumber = new Random().Next(1, 1000000);
         this.name = name;
         this.description = description;
         this.price = price;
@@ -51,6 +52,17 @@ class Product
   public string FullName()
     {
         return this.name + GetProductNumber();
+    }
+    public string SerialNumber()
+    {
+        string serialNumber = "";
+        int serialNumberLength = 8 - this.productNumber.ToString().Length;
+        for(int i = 0; i < serialNumberLength; i++)
+        {
+            serialNumber += '0';
+        }
+        serialNumber += this.productNumber.ToString();
+        return serialNumber;
     }
 }
 

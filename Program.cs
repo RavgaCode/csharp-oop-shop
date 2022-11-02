@@ -26,7 +26,7 @@ class Product
     private int productNumber = new Random().Next(1, 100);
     public string name;
     public string description;
-    public float price;
+    private float price;
     public int iva;
 
     public Product(string name, string description, int price, int iva)
@@ -41,9 +41,9 @@ class Product
     {
       return this.productNumber;
     }
-    public float BasePrice
+    public float BasePrice()
     {
-        get{return price;}
+        return this.price;
      }
     public float FullPrice()
     {
